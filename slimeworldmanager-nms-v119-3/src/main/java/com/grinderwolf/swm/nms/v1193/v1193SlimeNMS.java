@@ -22,6 +22,7 @@ import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.WorldLoader;
 import net.minecraft.server.dedicated.DedicatedServer;
 import net.minecraft.server.dedicated.DedicatedServerProperties;
 import net.minecraft.tags.BlockTags;
@@ -310,6 +311,13 @@ public class v1193SlimeNMS implements SlimeNMS {
 
             worldDataServer = new PrimaryLevelData(worldSettings, serverProps.worldOptions, PrimaryLevelData.SpecialWorldProperty.NONE, Lifecycle.stable());
         }
+
+        // CraftBukkit does something like this... maybe...
+        WorldLoader.DataLoadContext loader = DedicatedServer.getServer().worldLoader;
+        worldDataServer.customDimensions = serverProps
+                .createDimensions(loader.datapackWorldgen())
+                .bake(loader.datapackDimensions().registryOrThrow(Registries.LEVEL_STEM))
+                .dimensions();
 
         worldDataServer.checkName(worldName);
         worldDataServer.setModdedInfo(mcServer.getServerModName(), mcServer.getModdedStatus().shouldReportAsModified());
