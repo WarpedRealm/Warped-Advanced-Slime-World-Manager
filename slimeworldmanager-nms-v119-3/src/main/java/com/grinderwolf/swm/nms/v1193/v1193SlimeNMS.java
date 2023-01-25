@@ -36,7 +36,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.dimension.LevelStem;
-import net.minecraft.world.level.levelgen.WorldDimensions;
 import net.minecraft.world.level.storage.LevelStorageSource;
 import net.minecraft.world.level.storage.LevelVersion;
 import net.minecraft.world.level.storage.PrimaryLevelData;
@@ -117,8 +116,7 @@ public class v1193SlimeNMS implements SlimeNMS {
         }
 
         injectFakeDimensions = false;
-        Registry<LevelStem> registry = new MappedRegistry<>(Registries.LEVEL_STEM, Lifecycle.stable(), false);
-        return new WorldDimensions(registry);
+        return new MappedRegistry<>(Registries.ACTIVITY, Lifecycle.stable(), false);
     }
 
     @Override

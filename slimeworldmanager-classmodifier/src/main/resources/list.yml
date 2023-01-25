@@ -25,23 +25,17 @@ v1_19_R1:
     - a(net.minecraft.world.level.ChunkCoordIntPair)@v1_19_R1/EntityStorage_loadEntities.txt
     - a(net.minecraft.world.level.entity.ChunkEntities)@v1_19_R1/EntityStorage_storeEntities.txt
     - a(boolean)@v1_19_R1/EntityStorage_flush.txt
-
 v1_19_R2:
-  # Mojang: net/minecraft/server/level/ChunkMap
   net/minecraft/server/level/PlayerChunkMap:
-    # Mojang: save(Lnet/minecraft/world/level/chunk/ChunkAccess;)Z
-    - b(net.minecraft.world.level.chunk.IChunkAccess)@v1_19_R1/PlayerChunkMap_saveChunk.txt
-    # Mojang: scheduleChunkLoad(Lnet/minecraft/world/level/ChunkPos;)Ljava/util/concurrent/CompletableFuture;
+    - a(net.minecraft.world.level.chunk.IChunkAccess)@v1_19_R1/PlayerChunkMap_saveChunk.txt
     - g(net.minecraft.world.level.ChunkCoordIntPair)@v1_19_R1/PlayerChunkMap_loadChunk.txt
-  # Mojang: net/minecraft/world/level/saveddata/SavedData
   net/minecraft/world/level/saveddata/PersistentBase:
-    # Mojang: save(Ljava/io/File;)V
     - a(java.io.File)@v1_19_R1/PersistentBase_saveData.txt
-  # Mojang: net/minecraft/world/level/levelgen/WorldGenSettings
   net/minecraft/world/level/levelgen/GeneratorSettings:
-    # Mojang 1.19.2: dimensions()Lnet/minecraft/core/Registry;
-    # Mojang 1.19.3: dimensions()Lnet/minecraft/world/level/levelgen/WorldDimensions;
-    - b()@v1_19_R2/GeneratorSettings_injectWorlds.txt
+    - d()@v1_19_R1/GeneratorSettings_injectWorlds.txt
+  # net/minecraft/world/level/chunk/storage/EntityStorage:
+    #  - a(net.minecraft.world.level.ChunkCoordIntPair)@v1_19_R1/EntityStorage_loadEntities.txt
+    # - a(boolean)@v1_19_R1/EntityStorage_flush.txt
   io/papermc/paper/chunk/system/scheduling/NewChunkHolder:
     - saveEntities(io.papermc.paper.world.ChunkEntitySlices,boolean)@v1_19_R2/EntityStorage_storeEntities.txt
   io/papermc/paper/chunk/system/scheduling/ChunkTaskScheduler:
